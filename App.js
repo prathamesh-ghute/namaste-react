@@ -123,6 +123,7 @@ const elem3 = (
 )
 
 // infinite loop in react : deadlock -> component inside element and element inside conmponent
+//1
 const HeadingComponent6 = () =>(
     <div>
         {title1}
@@ -139,8 +140,26 @@ const title1 = (
 
 </div>
 );
+//2
+const C1 =() =>(
+    <div>
+    <h1>
+        Hello from c1
+    </h1>
+    <C2 />
+    </div>
+)
+
+const C2 =() =>(
+    <div>
+    <h1>
+        Hello from c2
+    </h1>
+    <C1 />
+    </div>
+)
 
 // Cross site Scripting attack (XSS attack) prevention
+// JSX have ability tto handle all the attack 
 
-
-root.render(title1);
+root.render(<C1 />);

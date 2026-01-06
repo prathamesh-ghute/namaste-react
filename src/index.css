@@ -49,3 +49,8 @@
   gap: 10px;
   margin: 10px;
 }
+
+.filter-btn{
+  margin:10px;
+  cursor: pointer;
+}

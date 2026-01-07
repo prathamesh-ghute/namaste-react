@@ -8,6 +8,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 // component composition
 const AppLayout = () => {
+    console.log("AppLayout Rendered");
     return (
         <div className="app">
             <Header />

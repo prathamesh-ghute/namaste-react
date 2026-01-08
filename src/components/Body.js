@@ -2,7 +2,6 @@
 import RestaurantCard from "./RestaurantComponent";
 import Shimmer from "./Shimmer";
 // import React from "react";
-
 import { useState , useEffect} from "react";
 import {Link} from "react-router-dom";
 
@@ -19,6 +18,9 @@ const Body = () =>{
         setFilteredRestaurant(filteredList);
     }
 
+    useEffect(() => {
+        fetchData();
+    }, []);
     
     const fetchData = async () => {
         const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.4472008&lng=73.8256852");
@@ -29,10 +31,8 @@ const Body = () =>{
         setListOfRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         setFilteredRestaurant(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     }
-    useEffect(() => {
-        fetchData();
-    }, []);
 
+  
     // Conditional Rendering 
     // if the list is empty => loading...
     // if(listOfRestaurants.length === 0){

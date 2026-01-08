@@ -1,6 +1,7 @@
 # Namaste react
 
 # Parcel
+- Bundle all file in one file
 - Dev Build
 - Local Server
 - HMR = Hot Module Replacement   //it means it use Auto - reloading

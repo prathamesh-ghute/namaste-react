@@ -2,19 +2,22 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Shimmer from "./Shimmer";
 import resData from "../utils/resData";
+import { MENU_API_URL } from "../utils/constants";
 
 const RestaurantMenu = () => {
-  // const { resId } = useParams();
+  const { resId } = useParams();
   const [resInfo, setResInfo] = useState(null);
 
   // console.log(resId);
-  
+
 
   useEffect(() => {
     fetchMenuData();
   }, []);
   const fetchMenuData = async () => {
-    // const data = await fetch("https://api.allorigins.win/raw?url=https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=18.4472008&lng=73.8256852&restaurantId=279904&catalog_qa=undefined&submitAction=ENTER");
+    // // const data = await fetch("https://api.allorigins.win/raw?url=https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=18.4472008&lng=73.8256852&restaurantId=279904&catalog_qa=undefined&submitAction=ENTER");
+
+    // const data = await fetch(MENU_API_URL+resId);
     // const json = await data.json();
 
     // console.log(json);
@@ -42,7 +45,7 @@ const RestaurantMenu = () => {
   
   return (
     <div className="menu">
-       <h1>Restaurant Name  {name}</h1> 
+       <h1>Restaurant Name:  {name}</h1> 
       <p>
         cuisines: {cuisines.join(", ")}
          - cost for two: {costForTwo/100}

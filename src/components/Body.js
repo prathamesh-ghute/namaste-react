@@ -1,8 +1,11 @@
 // import {resList} from "../utils/mockData";
 import RestaurantCard from "./RestaurantComponent";
 import Shimmer from "./Shimmer";
-import React from "react";
+// import React from "react";
+
 import { useState , useEffect} from "react";
+import {Link} from "react-router-dom";
+
 const Body = () =>{
     // Local State Variable - Super Powerful variable
     const [listOfRestaurants, setListOfRestaurants] = useState([]);
@@ -40,6 +43,7 @@ const Body = () =>{
     console.log("Body Rendered");
    
     return listOfRestaurants.length === 0?  <Shimmer /> : (
+       
         <div className="body">
         
             <div className="filter">
@@ -79,7 +83,7 @@ const Body = () =>{
                 {
                     // using unique id as key
                     // it is recommanded to use unique id as key
-                    filteredRestaurant.map((restaurant) =>( <RestaurantCard key={restaurant.info.id} resData={restaurant} />)
+                    filteredRestaurant.map((restaurant) =>( <Link key={restaurant.info.id} to={"/restaurant/"+restaurant.info.id}><RestaurantCard  resData={restaurant} /></Link>)
                     )
                 }
                 {/* {// using index as key 

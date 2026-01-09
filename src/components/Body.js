@@ -2,6 +2,7 @@
 import RestaurantCard from "./RestaurantComponent";
 import Shimmer from "./Shimmer";
 // import React from "react";
+import useOnlineStatus from "../utils/useOnlineStatus";
 import { useState , useEffect} from "react";
 import {Link} from "react-router-dom";
 
@@ -32,7 +33,11 @@ const Body = () =>{
         setFilteredRestaurant(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     }
 
-  
+    const onlineStatus = useOnlineStatus();
+
+    if(!onlineStatus){
+        return <h1>Looks Like you're offline!! Please check your internet connection;</h1>
+    }
     // Conditional Rendering 
     // if the list is empty => loading...
     // if(listOfRestaurants.length === 0){
@@ -46,11 +51,11 @@ const Body = () =>{
        
         <div className="body">
         
-            <div className="filter">
-                <div className="search">
-            <input type="text"  className="search-box" value={searchText} onChange={(e) =>{
+            <div className="filter flex">
+                <div className="search m-4 p-4">
+            <input type="text"  className="search-box border border-solid border-black" value={searchText} onChange={(e) =>{
                 setSearchText(e.target.value)}}/>
-            <button className="search-btn" onClick={ () =>{
+            <button className="search-btn  px-4 py-2 bg-green-100 m-4 rounded-lg" onClick={ () =>{
                 //filter the restraunt cards and update the UI
                 // searchText
                 // console.log("searchText", searchText);
@@ -66,10 +71,12 @@ const Body = () =>{
 
             }}>Search</button>
             </div>
-                <button className="filter-btn" onClick={handleTopRatedClick}>Top Rated Restaurants</button>
+            <div className="search m-4 p-4 items-center">
+                <button className="filter-btn px-4 py-2 bg-gray-100 m-4 rounded-lg" onClick={handleTopRatedClick}>Top Rated Restaurants</button>
+            </div>
             </div>
          {/* inline styling 2 method  style={{backgroundColor : "rgba(255, 255, 255, 1)"}}*/}
-            <div className="res-conatainer" >
+            <div className="res-conatainer flex flex-wrap" >
                 {/* <RestaurantCard resData={resList[0]}/>
                 <RestaurantCard resData={resList[1]}/>
                 <RestaurantCard resData={resList[2]}/>
@@ -83,7 +90,9 @@ const Body = () =>{
                 {
                     // using unique id as key
                     // it is recommanded to use unique id as key
-                    filteredRestaurant.map((restaurant) =>( <Link key={restaurant.info.id} to={"/restaurant/"+restaurant.info.id}><RestaurantCard  resData={restaurant} /></Link>)
+                    filteredRestaurant.map((restaurant) =>( 
+                    <Link key={restaurant.info.id} to={"/restaurant/"+restaurant.info.id}><RestaurantCard  resData={restaurant} /></Link>
+                )
                     )
                 }
                 {/* {// using index as key 

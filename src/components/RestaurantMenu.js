@@ -3,13 +3,14 @@ import { useParams } from "react-router-dom";
 import Shimmer from "./Shimmer";
 import resData from "../utils/resData";
 import { MENU_API_URL } from "../utils/constants";
-
+import useRestaurantMenu from "../utils/useRestaurantMenu";
 const RestaurantMenu = () => {
   const { resId } = useParams();
   const [resInfo, setResInfo] = useState(null);
 
   // console.log(resId);
-
+  // custom hook
+  const resInfoCustom = useRestaurantMenu(resId);
 
   useEffect(() => {
     fetchMenuData();

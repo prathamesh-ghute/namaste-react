@@ -1,13 +1,18 @@
 import React from 'react'
 import { CDN_URL } from '../utils/constants';
+import { useDispatch } from 'react-redux';
+import { addItem } from '../utils/cartSlice';
 const ItemList = (props) => {
     const {items,dummy} = props;
 
-    console.log("items",items);
-    // console.log("items 1",items[0]);
-    console.log("item list call",dummy);
-    
-    
+    const dispatch = useDispatch();
+
+    const handelAddItem = (item) => {
+        // dispatch an action
+        dispatch(addItem(item));
+
+    }
+        
   return (
     <div>
         {/* <h1>{dummy}</h1> */}
@@ -25,8 +30,8 @@ const ItemList = (props) => {
                             </p>
                         </div>
                         <div className='w-3/12 p-4'>
-                            <div className='absolute'>
-                                <button className='p-2 mx-16 rounded-lg bg-black text-white shadow-lg'>
+                            <div className='absolute '>
+                                <button className='cursor-pointer p-2 mx-16 rounded-lg bg-black text-white shadow-lg ' onClick={() => handelAddItem(item)}>
                                     Add +
                                 </button>
                             </div>

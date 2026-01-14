@@ -11,8 +11,9 @@ import RestaurantMenu from "./components/RestaurantMenu";
 // import Grocery from "./components/Grocery";
 import UserContext from "./utils/UserContext";
 const root = ReactDOM.createRoot(document.getElementById("root"));
-
-
+import  { Provider } from "react-redux"
+import appStore from "./utils/appStore";
+import Cart from "./components/Cart";
 const Grocery = lazy(() => import("./components/Grocery") );
 
 // component composition
@@ -30,19 +31,20 @@ const AppLayout = () => {
     },[])
 
 
-    console.log("AppLayout Rendered");
+    // console.log("AppLayout Rendered");
     return (
+    <Provider store={appStore} >
+        <UserContext.Provider value={{loggedInUser:username, setUsername}}>
 
-    <UserContext.Provider value={{loggedInUser:username, setUsername}}>
-
-        
-        <div className="app">
-             <UserContext.Provider value={{loggedInUser:"Elon Musk"}}>
-                <Header />
-            </UserContext.Provider>
-            <Outlet />
-        </div>
-    </UserContext.Provider>
+            
+            <div className="app">
+                {/* <UserContext.Provider value={{loggedInUser:"Elon Musk"}}> */}
+                    <Header />
+                {/* </UserContext.Provider> */}
+                <Outlet />
+            </div>
+        </UserContext.Provider>
+    </Provider>
     )
 }
 const appRouter = createBrowserRouter([
@@ -70,7 +72,11 @@ const appRouter = createBrowserRouter([
              {
                 path : "/grocery",
                 element :<Suspense fallback={<h1>Loading....</h1>}><Grocery /></Suspense> 
-            }
+            },
+            {
+                path : "/cart",
+                element : <Cart />
+            },
         ],
         errorElement : <Error />
     },

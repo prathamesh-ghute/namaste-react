@@ -1,6 +1,6 @@
 import "./Shimmer.css";
 const Shimmer = () =>{
-    console.log("Shimmer");
+    // console.log("Shimmer");
     
     return(
         <div className="body">

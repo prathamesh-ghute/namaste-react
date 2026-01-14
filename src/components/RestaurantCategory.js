@@ -11,7 +11,7 @@ const RestaurantCategory = (props) => {
          setShowIndex(showItem ? null : index);
         // showItem ? showItem: !showItem;
         // console.log("hello ",setShowIndex(showItem));
-        console.log("hello1 ",showItem);
+        // console.log("hello1 ",showItem);
         
         
     }

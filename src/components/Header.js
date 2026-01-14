@@ -3,13 +3,17 @@ import { useState , useContext} from "react";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import {Link} from "react-router-dom";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 
 const Header = () =>{
+    // Subscibing to the store using a Selector
+    const cartItems = useSelector((store) => store.cart.items);
+    console.log("cartItem", cartItems  )
     // let btnName = "Login";
     const [btnName, setBtnName] = useState("Login");
     const data = useContext(UserContext);
     
-    console.log("Header Rendered",data);
+    // console.log("Header Rendered",data);
     return (
         <div className="flex  justify-between shadow-sm bg-pink-100 sm:bg-yellow-100 lg:bg-green-100">
             <div className="logo-container">
@@ -22,7 +26,7 @@ const Header = () =>{
                     <li  className="px-4 "><Link to="/about">About us</Link></li>
                     <li className="px-4 "><Link to="/contact">Contact Us</Link></li>
                     <li className="px-4 "><Link to="/grocery">Grocery</Link></li>
-                    <li className="px-4 ">Cart</li>
+                    <li className="px-4 font-bold text-xl cursor-pointer"><Link to="/cart">Cart - ({cartItems.length} items)</Link></li>
                     <button className="login bg-black text-white p-2 hover:bg-amber-700 cursor-pointer" onClick={ () =>{
                         
                         if(btnName === "Login"){

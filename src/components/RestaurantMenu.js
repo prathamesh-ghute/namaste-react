@@ -36,7 +36,7 @@ const RestaurantMenu = () => {
     setResInfo(resData);
     // setResInfo(json.data);
   }
-  console.log("Menu :",resInfo);
+  // console.log("Menu :",resInfo);
 
   if (resInfo === null) return <Shimmer />;
 

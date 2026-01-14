@@ -83,7 +83,7 @@ const Body = () =>{
             </div>
 
                 <div>
-                    <label for="user" >UserName :</label>
+                    <label htmlFor="user" >UserName :   </label>
                     <input type="text" className="search-box border border-solid border-black" name="user" id="user" value={loggedInUser} onChange={(e) =>{
                 setUsername(e.target.value)}} />
                 

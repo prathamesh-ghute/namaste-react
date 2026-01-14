@@ -9,8 +9,8 @@ class UserClass extends React.Component {
             count2: 1,
             userInfo : {
                 name:"Dummy",
-            location:"Deafault",
-            avatar_url:"url",
+                location:"Deafault",
+                avatar_url:"url",
             }
         }
     }
@@ -26,7 +26,7 @@ class UserClass extends React.Component {
             }
         );
         setInterval(()=>{
-            console.log("Interval calling");
+            console.log("Interval calling from class");
             
         },1000);
         // console.log(json);
@@ -44,6 +44,7 @@ class UserClass extends React.Component {
         }
         console.log("component did update ");
         
+    
     }
     componentWillUnmount(){
         clearInterval(this.timer);

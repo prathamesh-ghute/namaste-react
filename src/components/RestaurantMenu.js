@@ -4,10 +4,15 @@ import Shimmer from "./Shimmer";
 import resData from "../utils/resData";
 import { MENU_API_URL } from "../utils/constants";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
+import RestaurantCategory from "./RestaurantCategory";
 const RestaurantMenu = () => {
   const { resId } = useParams();
+
+  const dummy = "Dummy Data";
+
   const [resInfo, setResInfo] = useState(null);
 
+  const [showIndex ,setShowIndex] = useState(null);
   // console.log(resId);
   // custom hook
   const resInfoCustom = useRestaurantMenu(resId);
@@ -31,7 +36,7 @@ const RestaurantMenu = () => {
     setResInfo(resData);
     // setResInfo(json.data);
   }
-  // console.log(resInfo);
+  console.log("Menu :",resInfo);
 
   if (resInfo === null) return <Shimmer />;
 
@@ -39,19 +44,24 @@ const RestaurantMenu = () => {
 
   // console.log("name",name);
   
-  const itemCards = resInfo[0]?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.itemCards;
- 
-  // console.log("item card ",itemCards);
+  // const itemCards = resInfo[0]?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.itemCards;
+   const categories = resInfo[0]?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+    (c) =>{
+      return c.card?.["card"]?.["@type"] == "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory" ;
+    }
+   );
+
+  // console.log("categories :",categories);
 
   
   return (
-    <div className="menu">
-       <h1>Restaurant Name:  {name}</h1> 
-      <p>
+    <div className="text-center">
+       <h1 className="font-bold my-6 text-2xl">Restaurant Name:  {name}</h1> 
+      <p className="font-bold text-lg">
         cuisines: {cuisines.join(", ")}
          - cost for two: {costForTwo/100}
       </p>
-      <h2>Menu</h2>
+      {/* <h2>Menu</h2>
       <ul>
         {itemCards.map((item) => (
         <li key={item.card.info.id}>
@@ -60,8 +70,25 @@ const RestaurantMenu = () => {
            {item.card.info.defaultPrice / 100}
         </li>
       ))}
-      </ul>
+      </ul> */}
       <h1>Menu Component Under Construction...</h1>
+
+      {/* categories accodions */}
+      {
+      categories.map((category,index) =>{
+        
+        return(
+          <RestaurantCategory key={index}  
+          dummy={dummy} 
+          data={category?.card?.card}  
+          showItem={index === showIndex ? true : false}  index={index} setShowIndex={setShowIndex}
+          />
+        )
+      })
+      }
+
+
+      <h1>Footer</h1>
     </div>
   );
 

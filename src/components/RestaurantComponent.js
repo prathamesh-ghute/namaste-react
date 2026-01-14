@@ -1,12 +1,14 @@
 import {CDN_URL} from "../utils/constants";
-
+import UserContext from "../utils/UserContext";
+import { useContext } from "react";
 const styleCard = {
     // backgroundColor : "#f0f0f0",
-    
 }
 
 // inline styling method 1
 const RestaurantCard = (props) => {
+
+    const data = useContext(UserContext);
     const{resData }= props;
 
     const {cloudinaryImageId,name,costForTwo,avgRating,sla,cuisines} = resData?.info;
@@ -21,8 +23,25 @@ const RestaurantCard = (props) => {
             <h4>⭐{avgRating} , {slaString}</h4>
             {/* <h4>{resData.info.sla.slaString}</h4> */}
             <h4>{cuisines.join(", ")}</h4>
+
+            <h4>User: {data.loggedInUser}</h4>
         </div>
     )
+};
+
+// Higher Order Component 
+
+// input - RestaurantCard ==> RestaurantCardPromoted
+export const withPromotedLabel = (RestaurantCard) =>{ // input as a component
+    // returing a function
+    return (props) =>{
+        return(
+            <div>
+                <label className="absolute bg-black text-white m-2 p-2 rounded-lg">Veg Restaurant</label>
+                <RestaurantCard {...props}/>
+            </div>
+        )
+    }
 }
 
 export default RestaurantCard;

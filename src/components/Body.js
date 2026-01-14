@@ -1,16 +1,20 @@
 // import {resList} from "../utils/mockData";
-import RestaurantCard from "./RestaurantComponent";
+import RestaurantCard, { withPromotedLabel } from "./RestaurantComponent";
 import Shimmer from "./Shimmer";
 // import React from "react";
 import useOnlineStatus from "../utils/useOnlineStatus";
-import { useState , useEffect} from "react";
+import { useState , useEffect, useContext} from "react";
 import {Link} from "react-router-dom";
-
+import UserContext from "../utils/UserContext";
 const Body = () =>{
     // Local State Variable - Super Powerful variable
     const [listOfRestaurants, setListOfRestaurants] = useState([]);
     const [filteredRestaurant,setFilteredRestaurant] =useState([]);
     const [searchText, setSearchText] = useState("");
+    // const [userText, setusertext] = useState("");
+
+    // passing the component to higher order component
+    const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
 
     const handleTopRatedClick = () => {
         const filteredList = filteredRestaurant.filter((res) =>{
@@ -45,8 +49,11 @@ const Body = () =>{
     //     return <Shimmer />;
     // }
     // whenever state variable changes react re-renders the component
-    console.log("Body Rendered");
+    console.log("Body Rendered",listOfRestaurants);
    
+    const {setUsername, loggedInUser} = useContext(UserContext);
+
+
     return listOfRestaurants.length === 0?  <Shimmer /> : (
        
         <div className="body">
@@ -74,6 +81,14 @@ const Body = () =>{
             <div className="search m-4 p-4 items-center">
                 <button className="filter-btn px-4 py-2 bg-gray-100 m-4 rounded-lg" onClick={handleTopRatedClick}>Top Rated Restaurants</button>
             </div>
+
+                <div>
+                    <label for="user" >UserName :</label>
+                    <input type="text" className="search-box border border-solid border-black" name="user" id="user" value={loggedInUser} onChange={(e) =>{
+                setUsername(e.target.value)}} />
+                
+
+                </div>
             </div>
          {/* inline styling 2 method  style={{backgroundColor : "rgba(255, 255, 255, 1)"}}*/}
             <div className="res-conatainer flex flex-wrap" >
@@ -91,7 +106,14 @@ const Body = () =>{
                     // using unique id as key
                     // it is recommanded to use unique id as key
                     filteredRestaurant.map((restaurant) =>( 
-                    <Link key={restaurant.info.id} to={"/restaurant/"+restaurant.info.id}><RestaurantCard  resData={restaurant} /></Link>
+                        <Link 
+                            key={restaurant.info.id} 
+                            to={"/restaurant/"+restaurant.info.id}
+                        > 
+                    { 
+                    restaurant.info.veg ? <RestaurantCardPromoted resData={restaurant} /> :<RestaurantCard  resData={restaurant} />
+                    }
+                        </Link>
                 )
                     )
                 }

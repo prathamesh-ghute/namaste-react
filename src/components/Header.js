@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 const Header = () =>{
     // Subscibing to the store using a Selector
     const cartItems = useSelector((store) => store.cart.items);
-    console.log("cartItem", cartItems  )
+    // console.log("cartItem", cartItems  )
     // let btnName = "Login";
     const [btnName, setBtnName] = useState("Login");
     const data = useContext(UserContext);
@@ -17,7 +17,7 @@ const Header = () =>{
     return (
         <div className="flex  justify-between shadow-sm bg-pink-100 sm:bg-yellow-100 lg:bg-green-100">
             <div className="logo-container">
-                <img className="w-56 " src={LOGO_URL} />
+                <img className="w-40" src={LOGO_URL} />
             </div>
             <div className="flex items-center ">
                 <ul className="flex  p-4  gap-2">
@@ -31,10 +31,10 @@ const Header = () =>{
                         
                         if(btnName === "Login"){
                             setBtnName("Logout");
-                            alert("Logged In Successfully");
+                            // alert("Logged In Successfully");
                         }else{
                             setBtnName("Login");
-                            alert("Logged Out Successfully");
+                            // alert("Logged Out Successfully");
                         }
                     }}>{btnName}</button>
                 <li className="px-4 font-bold">{data.loggedInUser}</li>

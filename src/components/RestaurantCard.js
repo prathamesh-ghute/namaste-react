@@ -10,11 +10,12 @@ const RestaurantCard = (props) => {
 
     const data = useContext(UserContext);
     const{resData }= props;
-
+    // console.log("resData :",resData);
+    
     const {cloudinaryImageId,name,costForTwo,avgRating,sla,cuisines} = resData?.info;
     const{slaString} = sla;
     return(
-        <div className="res-card m-4 p-4 w-64 rounded-lg bg-gray-100   hover:bg-gray-200 " style={styleCard} onClick={() =>{
+        <div data-testid="resCard" className="res-card m-4 p-4 w-64 rounded-lg bg-gray-100   hover:bg-gray-200 " style={styleCard} onClick={() =>{
             
         }}>
             <img className="res-logo rounded-lg" src={CDN_URL+cloudinaryImageId}/>

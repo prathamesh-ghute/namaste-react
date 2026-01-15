@@ -1,4 +1,3 @@
-import "./Shimmer.css";
 const Shimmer = () =>{
     // console.log("Shimmer");
     

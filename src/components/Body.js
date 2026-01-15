@@ -1,5 +1,5 @@
 // import {resList} from "../utils/mockData";
-import RestaurantCard, { withPromotedLabel } from "./RestaurantComponent";
+import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 // import React from "react";
 import useOnlineStatus from "../utils/useOnlineStatus";
@@ -60,7 +60,9 @@ const Body = () =>{
         
             <div className="filter flex">
                 <div className="search m-4 p-4">
-            <input type="text"  className="search-box border border-solid border-black" value={searchText} onChange={(e) =>{
+            <input type="text" 
+            data-testid = "searchInput"
+            className="search-box border border-solid border-black" value={searchText} onChange={(e) =>{
                 setSearchText(e.target.value)}}/>
             <button className="search-btn  px-4 py-2 bg-green-100 m-4 rounded-lg" onClick={ () =>{
                 //filter the restraunt cards and update the UI

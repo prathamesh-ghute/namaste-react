@@ -1,0 +1,94 @@
+{
+    "info": {
+        "id": "391073",
+        "name": "ZAZA Mughal Biryani",
+        "cloudinaryImageId": "RX_THUMBNAIL/IMAGES/VENDOR/2024/9/17/cd18ced5-e4ed-41ac-9775-a656e4cecd8d_391073.jpg",
+        "locality": "Zeal College Road",
+        "areaName": "Narhe",
+        "costForTwo": "₹250 for two",
+        "cuisines": [
+            "Biryani",
+            "North Indian",
+            "Awadhi"
+        ],
+        "avgRating": 4.6,
+        "parentId": "22473",
+        "avgRatingString": "4.6",
+        "totalRatingsString": "1.1K+",
+        "sla": {
+            "deliveryTime": 25,
+            "lastMileTravel": 0.4,
+            "serviceability": "SERVICEABLE",
+            "slaString": "20-30 mins",
+            "lastMileTravelString": "0.4 km",
+            "iconType": "ICON_TYPE_EMPTY"
+        },
+        "availability": {
+            "nextCloseTime": "2026-01-16 02:00:00",
+            "opened": true
+        },
+        "badges": {
+            "imageBadges": [
+                {
+                    "imageId": "android/static-assets/icons/big_rx.png",
+                    "description": "bolt!"
+                },
+                {
+                    "imageId": "Rxawards/_CATEGORY-Biryani.png",
+                    "description": "Delivery!"
+                }
+            ]
+        },
+        "isOpen": true,
+        "type": "F",
+        "badgesV2": {
+            "entityBadges": {
+                "imageBased": {
+                    "badgeObject": [
+                        {
+                            "attributes": {
+                                "description": "bolt!",
+                                "imageId": "android/static-assets/icons/big_rx.png"
+                            }
+                        },
+                        {
+                            "attributes": {
+                                "description": "Delivery!",
+                                "imageId": "Rxawards/_CATEGORY-Biryani.png"
+                            }
+                        }
+                    ]
+                },
+                "textBased": {},
+                "textExtendedBadges": {}
+            }
+        },
+        "aggregatedDiscountInfoV3": {
+            "header": "ITEMS",
+            "subHeader": "AT ₹99"
+        },
+        "differentiatedUi": {
+            "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+            "differentiatedUiMediaDetails": {
+                "lottie": {},
+                "video": {}
+            }
+        },
+        "reviewsSummary": {},
+        "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+        "restaurantOfferPresentationInfo": {},
+        "externalRatings": {
+            "aggregatedRating": {
+                "rating": "--"
+            }
+        },
+        "ratingsDisplayPreference": "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY"
+    },
+    "analytics": {
+        "context": "seo-data-57d34c9a-addf-4b64-902e-5585a32f8e72"
+    },
+    "cta": {
+        "link": "https://www.swiggy.com/city/pune/zaza-mughal-biryani-zeal-college-road-narhe-rest391073",
+        "type": "WEBLINK"
+    }
+}
